@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <link href="index.css" rel="stylesheet">
+    <title> skill sharer </title>
+</head>
+
+<h1 class="heading"> Show your skills here</h1>
+
+<div class="input1">
+    <label style="text-align: center;">name:</label>
+    <input type="text" id="name"><br><br>
+</div>
+
+<div class="input1">
+    <label style="text-align: center;">skill:</label>
+    <input type="text" id="skill"><br><br>
+    <label style="text-align: center;">confidence:</label>
+    <input type="text" id="confidence"><br><br>
+</div>
+
+<div class="input1">
+    <button id="button">
+    Submit</button>
+</div>
+
+<canvas height="5000" width="5000" id="ctx" style="border:2px solid black; padding-top: 50px;" />
+
+<script>
+    document.getElementById("button").onclick = function() {
+        var a = 1
+        var skill = document.getElementById("skill").value;
+        var confidence = document.getElementById("confidence").value;
+
+        var ctx = document.getElementById("ctx").getContext("2d")
+        ctx.clearRect(0, 0, 5000, 5000)
+        const rectangeW = 400
+        const rectangleH = 40
+
+        var confidenceVal = parseInt(confidence, 10)
+
+        ctx.fillStyle = "orange"
+        ctx.font = "30px Arial";
+        ctx.fillText(skill, 0, 40);
+
+
+        ctx.fillStyle = "black"
+        ctx.font = "30px Arial";
+        ctx.fillText(confidence + "%", 400 + ctx.measureText(skill).width, 40);
+
+        ctx.fillStyle = "blue"
+        ctx.fillRect(ctx.measureText(skill).width, 0, 4 * confidenceVal, 40)
+
+
+        ctx.fillStyle = "red"
+        ctx.fillRect(ctx.measureText(skill).width + 4 * confidenceVal, 0, 400 - 4 * confidenceVal, 40)
+
+    }
+</script>
+
+</html>
