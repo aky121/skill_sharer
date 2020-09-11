@@ -2,7 +2,13 @@
     text-align: center;
     color: red;
 }
-
-.input1 {
+label{
+    display: inline-block;
+    width: 300px;
+    text-align: right;
+    color: pink;
+ 
+}
+.input1{
     text-align: center;
 }

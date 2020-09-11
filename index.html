@@ -7,15 +7,15 @@
 
 <h1 class="heading"> Show your skills here</h1>
 
-<div class="input1">
-    <label style="text-align: center;">name:</label>
+<div class="input1 ">
+    <label >Name:</label>
     <input type="text" id="name"><br><br>
 </div>
 
-<div class="input1">
-    <label style="text-align: center;">skill:</label>
+<div class="input1 ">
+    <label   >Skill:</label>
     <input type="text" id="skill"><br><br>
-    <label style="text-align: center;">confidence:</label>
+    <label >Confidence:</label>
     <input type="text" id="confidence"><br><br>
 </div>
 
@@ -24,37 +24,39 @@
     Submit</button>
 </div>
 
-<canvas height="5000" width="5000" id="ctx" style="border:2px solid black; padding-top: 50px;" />
+<canvas height="5000" width="5000" id="ctx" style="padding-top: 50px;" />
 
 <script>
+    var a = 1;
     document.getElementById("button").onclick = function() {
-        var a = 1
         var skill = document.getElementById("skill").value;
         var confidence = document.getElementById("confidence").value;
 
-        var ctx = document.getElementById("ctx").getContext("2d")
-        ctx.clearRect(0, 0, 5000, 5000)
-        const rectangeW = 400
-        const rectangleH = 40
+        var ctx = document.getElementById("ctx").getContext("2d");
+ 
+        const rectangeW = 400;
+        const rectangleH = 40;
 
         var confidenceVal = parseInt(confidence, 10)
 
         ctx.fillStyle = "orange"
         ctx.font = "30px Arial";
-        ctx.fillText(skill, 0, 40);
+        ctx.fillText(skill, 0, 40*a+10*(a-1));
 
 
         ctx.fillStyle = "black"
         ctx.font = "30px Arial";
-        ctx.fillText(confidence + "%", 400 + ctx.measureText(skill).width, 40);
+        ctx.fillText(confidence + "%", 400 + ctx.measureText(skill).width, 40*a+10*(a-1))
 
-        ctx.fillStyle = "blue"
-        ctx.fillRect(ctx.measureText(skill).width, 0, 4 * confidenceVal, 40)
+        ctx.fillStyle = "green"
+        ctx.fillRect(ctx.measureText(skill).width, 40*(a-1)+10*(a-1), 4 * confidenceVal, 40)
 
 
         ctx.fillStyle = "red"
-        ctx.fillRect(ctx.measureText(skill).width + 4 * confidenceVal, 0, 400 - 4 * confidenceVal, 40)
-
+        ctx.fillRect(ctx.measureText(skill).width + 4 * confidenceVal, 40*(a-1)+10*(a-1), 400 - 4 * confidenceVal, 40)
+        ctx.fillStyle = "white"
+        ctx.fillRect(0,40*a+10*(a-1),100,10);
+        a++;
     }
 </script>
 
